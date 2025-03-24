@@ -1,7 +1,7 @@
 /* Загальні стилі для всього документа */
 body {
     margin: 0; /* Прибираємо зовнішні відступи */
-    font-family: 'Roboto', Arial, Helvetica, sans-serif; /* Встановлюємо шрифт: основний — Roboto, запасні — Arial, Helvetica, sans-serif */
+    font-family: 'Poppins', Arial, Helvetica, sans-serif; /* Встановлюємо шрифт: основний — Roboto, запасні — Arial, Helvetica, sans-serif */
     background-color: #ffffff; /* Білий фон для всієї сторінки */
     color: #000000; /* Чорний колір тексту для всієї сторінки */
     position: relative; /* Встановлюємо відносне позиціонування для можливості використання абсолютного позиціонування дочірніх елементів */
@@ -53,9 +53,16 @@ body::before {
 /* Стилі для зображення в секції About */
 .about-image img {
     width: 100%; /* Ширина зображення — 100% від батьківського блоку */
-    max-width: 500px; /* Максимальна ширина зображення — 500 пікселів */
     height: auto; /* Висота автоматична для збереження пропорцій */
     border-radius: 10px; /* Закруглюємо кути зображення на 10 пікселів */
+    position:relative;
+    object-position: 50% 0%;
+    overflow-clip-margin: content-box;
+    font-weight: 400;
+    display: block;
+    border-image-repeat: stretch;
+    background-repeat: no-repeat;
+    line-height: 27.2px;
 }
 
 /* Стилі для текстового блоку в секції About */
@@ -65,37 +72,49 @@ body::before {
 }
 
 /* Стилі для заголовка в текстовому блоці секції About */
-.about-text h2 {
-    font-size: 40px; /* Розмір шрифту — 40 пікселів */
-    color: #000000; /* Чорний колір тексту */
-    margin-bottom: 20px; /* Відступ знизу 20 пікселів */
+#span-about-header h2{
+    font-size: 54px; /* Розмір шрифту — 40 пікселів */
+    color: rgb(70, 80, 100); /*  колір тексту */
+    
 }
 
 /* Стилі для параграфів у текстовому блоці секції About */
 .about-text p {
     font-size: 18px; /* Розмір шрифту — 18 пікселів */
-    color: #000000; /* Чорний колір тексту */
+    color:rgb(70, 80, 100); /* колір тексту */
     line-height: 1.5; /* Висота рядка — 1.5 від розміру шрифту */
     margin-bottom: 15px; /* Відступ знизу 15 пікселів */
 }
 
 /* Стилі для кнопки в секції About */
 .about-button {
-    border: 2px solid #ffbb2f; /* Рамка товщиною 2 пікселі, колір — жовтий */
+    border: 2px solid #dc0a0a; /* Рамка товщиною 2 пікселі, колір */
     border-radius: 5px; /* Закруглюємо кути кнопки на 5 пікселів */
-    color: #ffbb2f; /* Жовтий колір тексту */
-    cursor: pointer; /* Курсор у вигляді вказівника при наведенні */
-    font-size: 18px; /* Розмір шрифту — 18 пікселів */
+    color: #ffffff; /* Жовтий колір тексту */
+    cursor: pointer; /* Курсор у вигляді вказівника при наведенні */    
     padding: 10px 20px; /* Внутрішні відступи: 10px зверху/знизу, 20px зліва/справа */
-    font-weight: 400; /* Товщина шрифту — нормальна */
     background-color: transparent; /* Прозорий фон */
     transition: 0.3s; /* Плавний перехід для ефектів при наведенні (0.3 секунди) */
 }
 
+#about-button-text {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 14px; /* Розмір шрифту — 18 пікселів */
+    font-weight: 400; /* Товщина шрифту — нормальна */
+    line-height: 14px;
+    color:rgb(255, 37, 76) /* колір тексту */
+}
+#about-button-text:hover {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 14px; /* Розмір шрифту — 18 пікселів */
+    font-weight: 400; /* Товщина шрифту — нормальна */
+    line-height: 14px;
+    color:rgb(255, 255, 255) /* колір тексту */
+}
 /* Стилі для кнопки в секції About при наведенні */
 .about-button:hover {
-    background-color: #ffbb2f; /* Жовтий фон при наведенні */
-    color: white; /* Білий колір тексту при наведенні */
+    background-color: #dc0a0a; /*фон при наведенні */
+    color: white; /* колір тексту при наведенні */
 }
 
 /* Стилі для хвилеподібного роздільника (Wave Divider) */
@@ -210,8 +229,7 @@ body::before {
 
 #map {
     height: 400px;
-    width: 100%;
-    max-width: 1150px;
+    /* width: 100%; */
     margin: 0 auto;
 }
 
@@ -221,7 +239,7 @@ footer {
     color: #000000;
     text-align: center;
     padding: 20px;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .footer-links {
