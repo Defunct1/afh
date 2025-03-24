@@ -1,0 +1,46 @@
+/* Graduates Section */
+.graduates-section {
+    padding: 50px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+}
+
+.graduates-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.graduates-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.graduate-card {
+    width: 200px;
+    margin: 20px;
+}
+
+.graduate-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.graduate-card h3 {
+    font-size: 20px;
+    color: #0000ff;
+    margin: 10px 0 5px;
+}
+
+.graduate-card p {
+    font-size: 16px;
+    color: #000000;
+}
+
+.graduate-card p::before {
+    content: '- ';
+    color: #0000ff;
+}
