@@ -1,564 +1,620 @@
-/* general styles */
+/* Загальні стилі для всього документа */
 body {
-    margin: 0;
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    background-color: #ffffff; /* Білий фон */
-    color: #000000; /* Чорний текст */
-    position: relative;
+    margin: 0; /* Прибираємо зовнішні відступи */
+    font-family: 'Roboto', Arial, Helvetica, sans-serif; /* Встановлюємо шрифт: основний — Roboto, запасні — Arial, Helvetica, sans-serif */
+    background-color: #ffffff; /* Білий фон для всієї сторінки */
+    color: #000000; /* Чорний колір тексту для всієї сторінки */
+    position: relative; /* Встановлюємо відносне позиціонування для можливості використання абсолютного позиціонування дочірніх елементів */
 }
 
+/* Прибираємо псевдоелемент ::before для body, щоб він не відображався */
 body::before {
-    display: none;
+    display: none; /* Ховаємо псевдоелемент */
 }
 
 /* Обмежуємо ширину для всіх секцій, якщо потрібно */
 .container {
-    max-width: 1150px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
+    max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
+    margin: 0 auto; /* Центруємо контейнер по горизонталі */
+    width: 100%; /* Ширина контейнера — 100% від батьківського елемента */
+    box-sizing: border-box; /* Включаємо padding і border у загальну ширину елемента */
 }
 
+/* Секція верхньої частини сторінки (Top Section) */
 .top-section {
-    position: relative;
-    background-image: url('pictures/backgroundFromMysite.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #ffffff;
-    min-height: 1150px;
-    padding-bottom: 50px;
-    overflow: hidden;
-    z-index: 1;
+    position: relative; /* Встановлюємо відносне позиціонування для можливості використання абсолютного позиціонування дочірніх елементів */
+    background-image: url('pictures/backgroundFromMysite.jpeg'); /* Встановлюємо фонове зображення */
+    background-size: cover; /* Фонове зображення розтягується, щоб покрити весь блок */
+    background-position: center; /* Центруємо фонове зображення */
+    background-repeat: no-repeat; /* Забороняємо повторення фонового зображення */
+    background-color: #ffffff; /* Білий фон, якщо зображення не завантажиться */
+    min-height: 400px; /* Мінімальна висота секції — 400 пікселів */
+    padding-bottom: 40px; /* Додаємо нижній відступ 40 пікселів */
+    overflow: hidden; /* Ховаємо вміст, який виходить за межі блоку */
+    z-index: 1; /* Встановлюємо z-index, щоб секція була вище за інші елементи */
 }
 
+/* Псевдоелемент ::before для затемнення фону в top-section */
 .top-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.068);
-    z-index: 0;
-    pointer-events: none;
+    content: ''; /* Порожній вміст псевдоелемента */
+    position: absolute; /* Абсолютне позиціонування відносно top-section */
+    top: 0; /* Розташовуємо зверху */
+    left: 0; /* Розташовуємо зліва */
+    width: 100%; /* Ширина 100% */
+    height: 100%; /* Висота 100% */
+    background: rgba(0, 0, 0, 0.068); /* Напівпрозорий чорний фон для затемнення (прозорість 6.8%) */
+    z-index: 0; /* Розташовуємо під вмістом top-section */
+    pointer-events: none; /* Вимикаємо взаємодію з псевдоелементом */
 }
 
+/* Псевдоелемент ::after для top-section (поки порожній) */
 .top-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: none;
-    z-index: 0;
-    pointer-events: none;
+    content: ''; /* Порожній вміст псевдоелемента */
+    position: absolute; /* Абсолютне позиціонування відносно top-section */
+    top: 0; /* Розташовуємо зверху */
+    left: 0; /* Розташовуємо зліва */
+    width: 100%; /* Ширина 100% */
+    height: 100%; /* Висота 100% */
+    background: none; /* Без фону */
+    z-index: 0; /* Розташовуємо під вмістом top-section */
+    pointer-events: none; /* Вимикаємо взаємодію з псевдоелементом */
 }
 
-/* Медіа-запити */
-@media (max-width: 768px) {
-    .top-section {
-        min-height: 600px;
-        padding-bottom: 30px;
-        background-size: contain;
-    }
-}
-
-@media (max-width: 480px) {
-    .top-section {
-        min-height: 400px;
-        padding-bottom: 20px;
-        background-size: contain;
-    }
-}
-
-/* Header */
+/* Стилі для шапки (Header) */
 header {
-    background-color: transparent;
-    padding: 20px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 2;
+    background-color: transparent; /* Прозорий фон для шапки */
+    padding: 20px 30px; /* Внутрішні відступи: 20px зверху/знизу, 30px зліва/справа */
+    display: flex; /* Використовуємо flexbox для розташування елементів */
+    justify-content: space-between; /* Розташовуємо елементи з рівними проміжками між ними */
+    align-items: center; /* Вирівнюємо елементи по вертикалі по центру */
+    position: relative; /* Відносне позиціонування для z-index */
+    z-index: 2; /* Розташовуємо шапку вище за top-section */
 }
 
+/* Стилі для логотипу */
 .logo {
-    margin-right: 30px;
+    margin-right: 30px; /* Відступ справа 30 пікселів */
 }
 
+/* Стилі для зображення логотипу */
 .logo img {
-    width: 172px;
-    height: auto;
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    width: 172px; /* Ширина зображення — 172 пікселі */
+    height: auto; /* Висота автоматична для збереження пропорцій */
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); /* Додаємо тінь для зображення: 0px зміщення по X, 0px по Y, 5px розмиття, напівпрозорий чорний колір */
 }
 
+/* Стилі для блоку з вибором мови */
 .language {
-    margin-right: 30px;
+    margin-right: 30px; /* Відступ справа 30 пікселів */
 }
 
+/* Стилі для посилань у блоці вибору мови */
 .language a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 5px;
+    color: #ffffff; /* Білий колір тексту для посилань */
+    text-decoration: none; /* Прибираємо підкреслення у посилань */
+    margin: 0 5px; /* Відступи зліва і справа по 5 пікселів */
 }
 
+/* Стилі для посилань у блоці вибору мови при наведенні */
 .language a:hover {
-    color: #ffbb2f;
+    color: #ffbb2f; /* Жовтий колір тексту при наведенні */
 }
 
+/* Стилі для навігаційного меню */
 nav {
-    margin-right: 30px;
+    margin-right: 30px; /* Відступ справа 30 пікселів */
 }
 
+/* Стилі для списку в навігаційному меню */
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+    list-style: none; /* Прибираємо маркери списку */
+    margin: 0; /* Прибираємо зовнішні відступи */
+    padding: 0; /* Прибираємо внутрішні відступи */
+    display: flex; /* Використовуємо flexbox для розташування пунктів меню в ряд */
 }
 
+/* Стилі для елементів списку в навігаційному меню */
 nav ul li {
-    margin: 0 10px;
+    margin: 0 10px; /* Відступи зліва і справа по 10 пікселів */
 }
 
+/* Стилі для посилань у навігаційному меню */
 nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
+    color: #ffffff; /* Білий колір тексту для посилань */
+    text-decoration: none; /* Прибираємо підкреслення у посилань */
+    font-weight: 500; /* Встановлюємо товщину шрифту (середня) */
 }
 
+/* Стилі для посилань у навігаційному меню при наведенні */
 nav ul li a:hover {
-    color: #ffbb2f;
+    color: #ffbb2f; /* Жовтий колір тексту при наведенні */
 }
 
-/* Контейнер для соціальних іконок */
+/* Контейнер для соціальних іконок у шапці */
 .header-right {
-    display: flex;
-    align-items: center;
+    display: flex; /* Використовуємо flexbox для розташування елементів */
+    align-items: center; /* Вирівнюємо елементи по вертикалі по центру */
 }
 
+/* Стилі для блоку соціальних іконок */
 .social {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
+    display: flex; /* Використовуємо flexbox для розташування іконок в ряд */
+    align-items: center; /* Вирівнюємо іконки по вертикалі по центру */
+    background-color: transparent; /* Прозорий фон */
 }
 
+/* Стилі для посилань соціальних іконок */
 .social a {
-    color: #ffffff;
-    margin-left: 10px;
-    font-size: 20px;
+    color: #ffffff; /* Білий колір для іконок */
+    margin-left: 10px; /* Відступ зліва 10 пікселів */
+    font-size: 20px; /* Розмір іконок — 20 пікселів */
 }
 
+/* Стилі для посилань соціальних іконок при наведенні */
 .social a:hover {
-    color: #ffbb2f;
+    color: #ffbb2f; /* Жовтий колір іконок при наведенні */
 }
 
-/* main content block */
+/* Стилі для основного вмісту сторінки */
 main {
-    padding: 0;
+    padding: 0; /* Прибираємо внутрішні відступи */
 }
 
+/* Стилі для секції Hero */
 .hero {
-    padding: 100px 50px;
-    color: #000000;
-    text-align: left;
-    position: relative;
-    z-index: 2;
+    padding: 100px 50px; /* Внутрішні відступи: 100px зверху/знизу, 50px зліва/справа */
+    color: #000000; /* Чорний колір тексту */
+    text-align: left; /* Вирівнюємо текст зліва */
+    position: relative; /* Відносне позиціонування для z-index */
+    z-index: 2; /* Розташовуємо вище за псевдоелементи top-section */
 }
 
+/* Стилі для заголовка в секції Hero */
 .hero h1 {
-    font-size: 48px;
-    color: #000000;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 48px; /* Розмір шрифту — 48 пікселів */
+    color: #000000; /* Чорний колір тексту */
+    font-weight: 700; /* Товщина шрифту — жирний */
+    margin-bottom: 20px; /* Відступ знизу 20 пікселів */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Додаємо тінь для тексту: 2px зміщення по X, 2px по Y, 4px розмиття, напівпрозорий чорний колір */
 }
 
+/* Стилі для параграфа в секції Hero */
 .hero p {
-    font-size: 20px;
-    color: #000000;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    font-size: 20px; /* Розмір шрифту — 20 пікселів */
+    color: #000000; /* Чорний колір тексту */
+    margin-bottom: 30px; /* Відступ знизу 30 пікселів */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Додаємо тінь для тексту: 1px зміщення по X, 1px по Y, 3px розмиття, напівпрозорий чорний колір */
 }
 
-/* about section */
+/* Стилі для секції About */
 .about {
-    padding: 50px;
-    background-size: cover;
-    background-position: center;
-    color: #000000;
+    padding: 10px; /* Внутрішні відступи 10 пікселів з усіх боків */
+    background-size: cover; /* Фонове зображення розтягується, щоб покрити весь блок */
+    background-position: center; /* Центруємо фонове зображення */
+    color: #000000; /* Чорний колір тексту */
 }
 
-.about h2 {
-    font-size: 50px;
-    color: #000000;
-    margin: 0 0 20px 0;
-    text-align: center;
-}
-
+/* Стилі для контейнера в секції About */
 .about-container {
-    display: block;
-    max-width: 1150px;
-    margin: 0 auto;
+    max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
+    margin: 0 auto; /* Центруємо контейнер по горизонталі */
 }
 
-.about-image {
-    display: none;
-}
-
-.about-text {
-    text-align: left;
-}
-
-.about-text p {
-    font-size: 18px;
-    color: #000000;
-    line-height: 1.5;
-    margin: 0 0 15px 0;
-}
-
+/* Стилі для вмісту в секції About */
 .about-content {
-    flex: 1;
+    display: flex; /* Використовуємо flexbox для розташування елементів */
+    align-items: center; /* Вирівнюємо елементи по вертикалі по центру */
+    gap: 30px; /* Проміжок між елементами — 30 пікселів */
 }
 
+/* Стилі для блоку зображення в секції About */
+.about-image {
+    flex: 1; /* Зображення займає 1 частину доступного простору */
+}
+
+/* Стилі для зображення в секції About */
+.about-image img {
+    width: 100%; /* Ширина зображення — 100% від батьківського блоку */
+    max-width: 500px; /* Максимальна ширина зображення — 500 пікселів */
+    height: auto; /* Висота автоматична для збереження пропорцій */
+    border-radius: 10px; /* Закруглюємо кути зображення на 10 пікселів */
+}
+
+/* Стилі для текстового блоку в секції About */
+.about-text {
+    flex: 2; /* Текст займає 2 частини доступного простору */
+    text-align: left; /* Вирівнюємо текст зліва */
+}
+
+/* Стилі для заголовка в текстовому блоці секції About */
+.about-text h2 {
+    font-size: 40px; /* Розмір шрифту — 40 пікселів */
+    color: #000000; /* Чорний колір тексту */
+    margin-bottom: 20px; /* Відступ знизу 20 пікселів */
+}
+
+/* Стилі для параграфів у текстовому блоці секції About */
+.about-text p {
+    font-size: 18px; /* Розмір шрифту — 18 пікселів */
+    color: #000000; /* Чорний колір тексту */
+    line-height: 1.5; /* Висота рядка — 1.5 від розміру шрифту */
+    margin-bottom: 15px; /* Відступ знизу 15 пікселів */
+}
+
+/* Стилі для кнопки в секції About */
 .about-button {
-    border: 2px solid #ffbb2f;
-    border-radius: 5px;
-    color: #ffbb2f;
-    cursor: pointer;
-    display: block;
-    font-size: 18px;
-    padding: 10px 20px;
-    font-weight: 400;
-    text-align: center;
-    margin: 20px auto;
-    background-color: transparent;
+    border: 2px solid #ffbb2f; /* Рамка товщиною 2 пікселі, колір — жовтий */
+    border-radius: 5px; /* Закруглюємо кути кнопки на 5 пікселів */
+    color: #ffbb2f; /* Жовтий колір тексту */
+    cursor: pointer; /* Курсор у вигляді вказівника при наведенні */
+    font-size: 18px; /* Розмір шрифту — 18 пікселів */
+    padding: 10px 20px; /* Внутрішні відступи: 10px зверху/знизу, 20px зліва/справа */
+    font-weight: 400; /* Товщина шрифту — нормальна */
+    background-color: transparent; /* Прозорий фон */
+    transition: 0.3s; /* Плавний перехід для ефектів при наведенні (0.3 секунди) */
 }
 
+/* Стилі для кнопки в секції About при наведенні */
 .about-button:hover {
-    background-color: #ffbb2f;
-    color: white;
+    background-color: #ffbb2f; /* Жовтий фон при наведенні */
+    color: white; /* Білий колір тексту при наведенні */
 }
 
-/* Wave Divider */
+/* Стилі для хвилеподібного роздільника (Wave Divider) */
 .wave-divider {
-    width: 100%;
-    height: 100px;
-    background-image: url('pictures/wave-divider.svg');
-    background-size: cover;
-    background-position: center;
+    width: 100%; /* Ширина 100% */
+    height: 100px; /* Висота 100 пікселів */
+    background-image: url('pictures/wave-divider.svg'); /* Встановлюємо фонове зображення (хвиля) */
+    background-size: cover; /* Фонове зображення розтягується, щоб покрити весь блок */
+    background-position: center; /* Центруємо фонове зображення */
 }
 
-/* Services Section (Our Courses) */
+/* Стилі для секції Our Courses (Services Section) */
 .services-section {
-    padding: 50px;
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
+    padding: 50px; /* Внутрішні відступи 50 пікселів з усіх боків */
+    background-color: #ffffff; /* Білий фон */
+    color: #000000; /* Чорний текст */
+    text-align: center; /* Вирівнюємо текст по центру */
 }
 
+/* Стилі для заголовка в секції Our Courses */
 .services-section h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
+    font-size: 36px; /* Розмір шрифту — 36 пікселів */
+    margin-bottom: 40px; /* Відступ знизу 40 пікселів */
 }
 
+/* Стилі для контейнера карток у секції Our Courses */
 .services-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1150px;
-    margin: 0 auto;
+    display: flex; /* Використовуємо flexbox для розташування карток */
+    justify-content: space-around; /* Розташовуємо картки з рівними проміжками між ними */
+    flex-wrap: wrap; /* Дозволяємо карткам переноситися на новий рядок */
+    max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
+    margin: 0 auto; /* Центруємо контейнер по горизонталі */
 }
 
+/* Стилі для картки курсу в секції Our Courses */
 .service-card {
-    width: 300px;
-    margin: 20px;
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 10px;
+    width: 300px; /* Ширина картки — 300 пікселів */
+    margin: 20px; /* Зовнішні відступи 20 пікселів з усіх боків */
+    background-color: #f5f5f5; /* Світло-сірий фон */
+    padding: 20px; /* Внутрішні відступи 20 пікселів з усіх боків */
+    border-radius: 10px; /* Закруглюємо кути картки на 10 пікселів */
 }
 
+/* Стилі для заголовка картки в секції Our Courses */
 .service-card h3 {
-    font-size: 20px;
-    color: #0000ff;
-    margin-bottom: 10px;
+    font-size: 20px; /* Розмір шрифту — 20 пікселів */
+    color: #0000ff; /* Синій колір тексту */
+    margin-bottom: 10px; /* Відступ знизу 10 пікселів */
 }
 
+/* Стилі для параграфа в картці секції Our Courses */
 .service-card p {
-    font-size: 16px;
-    color: #000000;
+    font-size: 16px; /* Розмір шрифту — 16 пікселів */
+    color: #000000; /* Чорний колір тексту */
 }
 
+/* Додаємо синє тире перед текстом у параграфі картки */
 .service-card p::before {
-    content: '- ';
-    color: #0000ff;
+    content: '- '; /* Додаємо тире перед текстом */
+    color: #0000ff; /* Синій колір для тире */
 }
 
+/* Стилі для кнопки в картці секції Our Courses */
 .service-button {
-    border: 2px solid #ffbb2f;
-    border-radius: 5px;
-    color: #ffbb2f;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 16px;
-    padding: 8px 16px;
-    font-weight: 400;
-    text-align: center;
-    margin-top: 20px;
-    background-color: transparent;
-    text-decoration: none;
+    border: 2px solid #ffbb2f; /* Рамка товщиною 2 пікселі, колір — жовтий */
+    border-radius: 5px; /* Закруглюємо кути кнопки на 5 пікселів */
+    color: #ffbb2f; /* Жовтий колір тексту */
+    cursor: pointer; /* Курсор у вигляді вказівника при наведенні */
+    display: inline-block; /* Вирівнюємо кнопку як інлайн-блок */
+    font-size: 16px; /* Розмір шрифту — 16 пікселів */
+    padding: 8px 16px; /* Внутрішні відступи: 8px зверху/знизу, 16px зліва/справа */
+    font-weight: 400; /* Товщина шрифту — нормальна */
+    text-align: center; /* Вирівнюємо текст по центру */
+    margin-top: 20px; /* Відступ зверху 20 пікселів */
+    background-color: transparent; /* Прозорий фон */
+    text-decoration: none; /* Прибираємо підкреслення у посилання */
 }
 
+/* Стилі для кнопки в картці секції Our Courses при наведенні */
 .service-button:hover {
-    background-color: #ffbb2f;
-    color: white;
+    background-color: #ffbb2f; /* Жовтий фон при наведенні */
+    color: white; /* Білий колір тексту при наведенні */
 }
 
-/* Lecturers Section */
+/* Стилі для секції Our Lecturers (Lecturers Section) */
 .lecturers-section {
-    position: relative;
-    padding: 50px;
-    background-color: #ffffff;
-    color: #000000;
+    position: relative; /* Відносне позиціонування для псевдоелементів */
+    padding: 50px; /* Внутрішні відступи 50 пікселів з усіх боків */
+    background-color: #ffffff; /* Білий фон */
+    color: #000000; /* Чорний текст */
 }
 
+/* Псевдоелемент ::after для декоративного градієнтного кола в секції Lecturers */
 .lecturers-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 300px;
-    background-image: url('pictures/gradient-circle.svg');
-    background-size: cover;
-    z-index: 0;
+    content: ''; /* Порожній вміст псевдоелемента */
+    position: absolute; /* Абсолютне позиціонування відносно lecturers-section */
+    top: 0; /* Розташовуємо зверху */
+    right: 0; /* Розташовуємо справа */
+    width: 300px; /* Ширина 300 пікселів */
+    height: 300px; /* Висота 300 пікселів */
+    background-image: url('pictures/gradient-circle.svg'); /* Встановлюємо фонове зображення (градієнтне коло) */
+    background-size: cover; /* Фонове зображення розтягується, щоб покрити весь блок */
+    z-index: 0; /* Розташовуємо під вмістом секції */
 }
 
+/* Стилі для контейнера карток у секції Our Lecturers */
 .lecturers-container {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1150px;
-    margin: 0 auto;
+    position: relative; /* Відносне позиціонування для z-index */
+    z-index: 1; /* Розташовуємо вище за псевдоелемент ::after */
+    display: flex; /* Використовуємо flexbox для розташування карток */
+    justify-content: space-around; /* Розташовуємо картки з рівними проміжками між ними */
+    flex-wrap: wrap; /* Дозволяємо карткам переноситися на новий рядок */
+    max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
+    margin: 0 auto; /* Центруємо контейнер по горизонталі */
 }
 
+/* Стилі для картки лектора в секції Our Lecturers */
 .lecturer-card {
-    width: 200px;
-    text-align: center;
-    margin: 20px;
+    width: 200px; /* Ширина картки — 200 пікселів */
+    text-align: center; /* Вирівнюємо текст по центру */
+    margin: 20px; /* Зовнішні відступи 20 пікселів з усіх боків */
 }
 
+/* Стилі для зображення в картці лектора */
 .lecturer-card img {
-    width: 100%;
-    border-radius: 10px;
+    width: 100%; /* Ширина зображення — 100% від батьківського блоку */
+    border-radius: 10px; /* Закруглюємо кути зображення на 10 пікселів */
 }
 
+/* Стилі для заголовка в картці лектора */
 .lecturer-card h3 {
-    font-size: 20px;
-    color: #0000ff;
-    margin: 10px 0 5px;
+    font-size: 20px; /* Розмір шрифту — 20 пікселів */
+    color: #0000ff; /* Синій колір тексту */
+    margin: 10px 0 5px; /* Відступи: 10px зверху, 0 з боків, 5px знизу */
 }
 
+/* Стилі для параграфа в картці лектора */
 .lecturer-card p {
-    font-size: 14px;
-    color: #000000;
+    font-size: 14px; /* Розмір шрифту — 14 пікселів */
+    color: #000000; /* Чорний колір тексту */
 }
 
+/* Додаємо синє тире перед текстом у параграфі картки лектора */
 .lecturer-card p::before {
-    content: '- ';
-    color: #0000ff;
+    content: '- '; /* Додаємо тире перед текстом */
+    color: #0000ff; /* Синій колір для тире */
 }
 
+/* Стилі для блоку соціальних іконок у картці лектора */
 .social-icons {
-    margin-top: 10px;
+    margin-top: 10px; /* Відступ зверху 10 пікселів */
 }
 
+/* Стилі для посилань соціальних іконок у картці лектора */
 .social-icons a {
-    color: #ffbb2f;
-    margin: 0 5px;
-    font-size: 18px;
+    color: #ffbb2f; /* Жовтий колір для іконок */
+    margin: 0 5px; /* Відступи зліва і справа по 5 пікселів */
+    font-size: 18px; /* Розмір іконок — 18 пікселів */
 }
 
+/* Стилі для посилань соціальних іконок у картці лектора при наведенні */
 .social-icons a:hover {
-    color: #000000;
+    color: #000000; /* Чорний колір іконок при наведенні */
 }
 
-/* Benefits Section (Why Choose Us?) */
+/* Стилі для секції Why Choose Us? (Benefits Section) */
 .benefits-section {
-    padding: 50px;
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
+    padding: 50px; /* Внутрішні відступи 50 пікселів з усіх боків */
+    background-color: #ffffff; /* Білий фон */
+    color: #000000; /* Чорний текст */
+    text-align: center; /* Вирівнюємо текст по центру */
 }
 
+/* Стилі для заголовка в секції Why Choose Us? */
 .benefits-section h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
+    font-size: 36px; /* Розмір шрифту — 36 пікселів */
+    margin-bottom: 40px; /* Відступ знизу 40 пікселів */
 }
 
+/* Стилі для контейнера карток у секції Why Choose Us? */
 .benefits-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1150px;
-    margin: 0 auto;
+    display: flex; /* Використовуємо flexbox для розташування карток */
+    justify-content: space-around; /* Розташовуємо картки з рівними проміжками між ними */
+    flex-wrap: wrap; /* Дозволяємо карткам переноситися на новий рядок */
+    max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
+    margin: 0 auto; /* Центруємо контейнер по горизонталі */
 }
 
+/* Стилі для картки в секції Why Choose Us? */
 .benefit-card {
-    width: 250px;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 250px; /* Ширина картки — 250 пікселів */
+    margin: 20px; /* Зовнішні відступи 20 пікселів з усіх боків */
+    display: flex; /* Використовуємо flexbox для розташування елементів у картці */
+    flex-direction: column; /* Розташовуємо елементи у стовпчик */
+    align-items: center; /* Вирівнюємо елементи по центру по горизонталі */
 }
 
+/* Стилі для іконки в картці секції Why Choose Us? */
 .benefit-card i {
-    font-size: 40px;
-    color: #ffbb2f;
-    margin-bottom: 20px;
+    font-size: 40px; /* Розмір іконки — 40 пікселів */
+    color: #ffbb2f; /* Жовтий колір іконки */
+    margin-bottom: 20px; /* Відступ знизу 20 пікселів */
 }
 
+/* Стилі для заголовка в картці секції Why Choose Us? */
 .benefit-card h3 {
-    font-size: 20px;
-    color: #0000ff;
-    margin-bottom: 10px;
+    font-size: 20px; /* Розмір шрифту — 20 пікселів */
+    color: #0000ff; /* Синій колір тексту */
+    margin-bottom: 10px; /* Відступ знизу 10 пікселів */
 }
 
+/* Стилі для параграфа в картці секції Why Choose Us? */
 .benefit-card p {
-    font-size: 16px;
-    color: #000000;
-    text-align: center;
+    font-size: 16px; /* Розмір шрифту — 16 пікселів */
+    color: #000000; /* Чорний колір тексту */
+    text-align: center; /* Вирівнюємо текст по центру */
 }
 
-/* CTA Section */
+/* Стилі для секції CTA (Call to Action) */
 .cta-section {
-    background-image: url('pictures/gradient-blue-purple-red.jpeg');
-    background-size: cover;
-    background-position: center;
-    padding: 80px 50px;
-    color: #ffffff;
-    text-align: center;
-    position: relative;
+    background-image: url('pictures/gradient-blue-purple-red.jpeg'); /* Встановлюємо фонове зображення */
+    background-size: cover; /* Фонове зображення розтягується, щоб покрити весь блок */
+    background-position: center; /* Центруємо фонове зображення */
+    padding: 80px 50px; /* Внутрішні відступи: 80px зверху/знизу, 50px зліва/справа */
+    color: #ffffff; /* Білий колір тексту */
+    text-align: center; /* Вирівнюємо текст по центру */
+    position: relative; /* Відносне позиціонування для псевдоелементів */
 }
 
+/* Псевдоелемент ::before для затемнення фону в секції CTA */
 .cta-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
+    content: ''; /* Порожній вміст псевдоелемента */
+    position: absolute; /* Абсолютне позиціонування відносно cta-section */
+    top: 0; /* Розташовуємо зверху */
+    left: 0; /* Розташовуємо зліва */
+    width: 100%; /* Ширина 100% */
+    height: 100%; /* Висота 100% */
+    background: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон для затемнення (прозорість 50%) */
+    z-index: 0; /* Розташовуємо під вмістом секції */
 }
 
+/* Стилі для заголовка в секції CTA */
 .cta-section h2 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 1;
+    font-size: 36px; /* Розмір шрифту — 36 пікселів */
+    font-weight: 700; /* Товщина шрифту — жирний */
+    margin-bottom: 20px; /* Відступ знизу 20 пікселів */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Додаємо тінь для тексту: 2px зміщення по X, 2px по Y, 4px розмиття, напівпрозорий чорний колір */
+    position: relative; /* Відносне позиціонування для z-index */
+    z-index: 1; /* Розташовуємо вище за псевдоелемент ::before */
 }
 
+/* Стилі для параграфа в секції CTA */
 .cta-section p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 1;
+    font-size: 18px; /* Розмір шрифту — 18 пікселів */
+    margin-bottom: 30px; /* Відступ знизу 30 пікселів */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Додаємо тінь для тексту: 1px зміщення по X, 1px по Y, 3px розмиття, напівпрозорий чорний колір */
+    position: relative; /* Відносне позиціонування для z-index */
+    z-index: 1; /* Розташовуємо вище за псевдоелемент ::before */
 }
 
+/* Стилі для кнопки в секції CTA */
 .cta-button {
-    border: 2px solid #ffbb2f;
-    border-radius: 5px;
-    color: #ffbb2f;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 18px;
-    padding: 10px 20px;
-    font-weight: 400;
-    text-align: center;
-    background-color: transparent;
-    text-decoration: none;
-    position: relative;
-    z-index: 1;
+    border: 2px solid #ffbb2f; /* Рамка товщиною 2 пікселі, колір — жовтий */
+    border-radius: 5px; /* Закруглюємо кути кнопки на 5 пікселів */
+    color: #ffbb2f; /* Жовтий колір тексту */
+    cursor: pointer; /* Курсор у вигляді вказівника при наведенні */
+    display: inline-block; /* Вирівнюємо кнопку як інлайн-блок */
+    font-size: 18px; /* Розмір шрифту — 18 пікселів */
+    padding: 10px 20px; /* Внутрішні відступи: 10px зверху/знизу, 20px зліва/справа */
+    font-weight: 400; /* Товщина шрифту — нормальна */
+    text-align: center; /* Вирівнюємо текст по центру */
+    background-color: transparent; /* Прозорий фон */
+    text-decoration: none; /* Прибираємо підкреслення у посилання */
+    position: relative; /* Відносне позиціонування для z-index */
+    z-index: 1; /* Розташовуємо вище за псевдоелемент ::before */
 }
 
+/* Стилі для кнопки в секції CTA при наведенні */
 .cta-button:hover {
-    background-color: #ffbb2f;
-    color: white;
+    background-color: #ffbb2f; /* Жовтий фон при наведенні */
+    color: white; /* Білий колір тексту при наведенні */
 }
 
-/* Events Section */
+/* Стилі для секції Our Events (Events Section) */
 .events-section {
-    padding: 50px;
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
+    padding: 50px; /* Внутрішні відступи 50 пікселів з усіх боків */
+    background-color: #ffffff; /* Білий фон */
+    color: #000000; /* Чорний текст */
+    text-align: center; /* Вирівнюємо текст по центру */
 }
 
+/* Стилі для заголовка в секції Our Events */
 .events-section h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
+    font-size: 36px; /* Розмір шрифту — 36 пікселів */
+    margin-bottom: 40px; /* Відступ знизу 40 пікселів */
 }
 
+/* Стилі для контейнера карток у секції Our Events */
 .events-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1150px;
-    margin: 0 auto;
+    display: flex; /* Використовуємо flexbox для розташування карток */
+    justify-content: space-around; /* Розташовуємо картки з рівними проміжками між ними */
+    flex-wrap: wrap; /* Дозволяємо карткам переноситися на новий рядок */
+    max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
+    margin: 0 auto; /* Центруємо контейнер по горизонталі */
 }
 
+/* Стилі для картки події в секції Our Events */
 .event-card {
-    width: 300px;
-    margin: 20px;
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 10px;
+    width: 300px; /* Ширина картки — 300 пікселів */
+    margin: 20px; /* Зовнішні відступи 20 пікселів з усіх боків */
+    background-color: #f5f5f5; /* Світло-сірий фон */
+    padding: 20px; /* Внутрішні відступи 20 пікселів з усіх боків */
+    border-radius: 10px; /* Закруглюємо кути картки на 10 пікселів */
 }
 
+/* Стилі для заголовка в картці секції Our Events */
 .event-card h3 {
-    font-size: 20px;
-    color: #0000ff;
-    margin-bottom: 10px;
+    font-size: 20px; /* Розмір шрифту — 20 пікселів */
+    color: #0000ff; /* Синій колір тексту */
+    margin-bottom: 10px; /* Відступ знизу 10 пікселів */
 }
 
+/* Стилі для параграфа в картці секції Our Events */
 .event-card p {
-    font-size: 16px;
-    color: #000000;
-    margin-bottom: 10px;
+    font-size: 16px; /* Розмір шрифту — 16 пікселів */
+    color: #000000; /* Чорний колір тексту */
+    margin-bottom: 10px; /* Відступ знизу 10 пікселів */
 }
 
+/* Додаємо синє тире перед текстом у параграфі картки події */
 .event-card p::before {
-    content: '- ';
-    color: #0000ff;
+    content: '- '; /* Додаємо тире перед текстом */
+    color: #0000ff; /* Синій колір для тире */
 }
 
+/* Стилі для кнопки в картці секції Our Events */
 .event-button {
-    border: 2px solid #ffbb2f;
-    border-radius: 5px;
-    color: #ffbb2f;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 16px;
-    padding: 8px 16px;
-    font-weight: 400;
-    text-align: center;
-    margin-top: 20px;
-    background-color: transparent;
-    text-decoration: none;
+    border: 2px solid #ffbb2f; /* Рамка товщиною 2 пікселі, колір — жовтий */
+    border-radius: 5px; /* Закруглюємо кути кнопки на 5 пікселів */
+    color: #ffbb2f; /* Жовтий колір тексту */
+    cursor: pointer; /* Курсор у вигляді вказівника при наведенні */
+    display: inline-block; /* Вирівнюємо кнопку як інлайн-блок */
+    font-size: 16px; /* Розмір шрифту — 16 пікселів */
+    padding: 8px 16px; /* Внутрішні відступи: 8px зверху/знизу, 16px зліва/справа */
+    font-weight: 400; /* Товщина шрифту — нормальна */
+    text-align: center; /* Вирівнюємо текст по центру */
+    margin-top: 20px; /* Відступ зверху 20 пікселів */
+    background-color: transparent; /* Прозорий фон */
+    text-decoration: none; /* Прибираємо підкреслення у посилання */
 }
 
+/* Стилі для кнопки в картці секції Our Events при наведенні */
 .event-button:hover {
-    background-color: #ffbb2f;
-    color: white;
+    background-color: #ffbb2f; /* Жовтий фон при наведенні */
+    color: white; /* Білий колір тексту при наведенні */
 }
+
 
 /* Graduates Section */
 .graduates-section {
