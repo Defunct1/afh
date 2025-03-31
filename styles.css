@@ -2,7 +2,7 @@
 body {
     margin: 0; /* Прибираємо зовнішні відступи */
     font-family: 'Poppins', Arial, Helvetica, sans-serif; /* Встановлюємо шрифт: основний — Roboto, запасні — Arial, Helvetica, sans-serif */
-    background-color: #ffffff; /* Білий фон для всієї сторінки */
+    background-color: #1f1616; /* Білий фон для всієї сторінки */
     color: #000000; /* Чорний колір тексту для всієї сторінки */
     position: relative; /* Встановлюємо відносне позиціонування для можливості використання абсолютного позиціонування дочірніх елементів */
 }
@@ -198,21 +198,6 @@ body::before {
     background-color: #ffbb2f; /* Жовтий фон при наведенні */
     color: white; /* Білий колір тексту при наведенні */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Location Section */
 .location-section {
