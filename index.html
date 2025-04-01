@@ -20,31 +20,71 @@
 </head>
 <body>
     <!-- Обгортка для верхньої частини -->
-<div class="hero-wrapper">
+<div class="top-section">
     <!-- Шапка -->
     <header>
-        <div class="header-left">
-            <div class="logo">
-                <img src="pictures/elephant-no-backgroun.png" alt="Logo IT Elephants">
+        <div class="horizontal-flow">
+            <div class="header-left">
+                <div class="header-logo">
+                     <a href="#" class="logo-content">
+                        <span class="logo-wrapper"><img width="172" height="auto" alt="logo" loading="lazy"  src="pictures/elephant-no-backgroun.png" alt="Logo IT Elephants"></span>
+                     </a>   
+                </div>
             </div>
-            <div class="language">
-                <a href="#">EN</a> | <a href="#">UA</a>
+            <div class="header-center">
+                <div class="header-center-inner">
+                    <div class="text-language">
+                        <div class="language-dropdown" tabindex="0"> <!-- Додано tabindex -->
+                            <div class="language-dropdown-btn">
+                                <div class="current-flag">
+                                    <img class="current-flag" src="frames/us.png" width="20" height="15" alt="English">
+                                </div>
+                                <div class="dropdown-content">En</div>
+                                <!-- <div class="triangle">
+                                    <svg width="12" height="6" viewBox="0 0 8 5" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 5l4-5H0z" fill="#465064"/>
+                                    </svg>
+                                </div> -->
+                            </div>
+                            <div class="language-dropdown-menu">
+                              <a href="#" class="dropdown-item">
+                                  <span class="dropdown-item-flag">
+                                      <img src="frames/ua.png" width="20" height="15" alt="Українська">
+                                  </span>
+                                  <span class="dropdown-item-text">Українська</span>
+                              </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="menu-social">
+                    <nav>
+                        <ul class="header-right-menu">
+                            <li><a href="#">Our courses</a></li>
+                            <li><a href="#">Our events</a></li>
+                            <li><a href="#">About school</a></li>
+                            <li><a href="#">Contacts</a></li>
+                        </ul>
+                        <ul class="header-social">
+                            <li class="header-social-icon">
+                                <a href="tel:+380933483402" class="social-link"><i class="fas fa-phone"></i></a>
+                            </li>
+                            <li class="header-social-icon">
+                                <a href="https://youtube.com" class="social-link"><i class="fab fa-youtube"></i></a>
+                            </li>
+                        </ul> 
+                    </nav>
+                </div>
             </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Our courses</a></li>
-                <li><a href="#">Our events</a></li>
-                <li><a href="#">About school</a></li>
-                <li><a href="#">Contacts</a></li>
-                <li class="social-item">
-                    <a href="tel:+380933483402" class="social-link"><i class="fas fa-phone"></i></a>
-                </li>
-                <li class="social-item">
-                    <a href="https://youtube.com" class="social-link"><i class="fab fa-youtube"></i></a>
-                </li>
-            </ul>
-        </nav>
+        <!-- Поточний контент хедера -->
+        <button class="burger-btn" aria-label="Відкрити меню" hidden>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
     </header>
 
     <main>

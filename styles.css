@@ -20,10 +20,6 @@ body::before {
     box-sizing: border-box; /* Включаємо padding і border у загальну ширину елемента */
 }
 
-
-
-
-
 /* Стилі для секції About */
 .about {
     padding: 10px; /* Внутрішні відступи 10 пікселів з усіх боків */

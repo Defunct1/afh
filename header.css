@@ -1,138 +1,369 @@
 /* Стилі для шапки (Header) */
-header {    
-    background-color: transparent; /* Прозорий фон для шапки */
-    padding: 20px 30px; /* Внутрішні відступи: 20px зверху/знизу, 30px зліва/справа */
-    display: flex; /* Використовуємо flexbox для розташування елементів */
-    justify-content: space-between; /* Розташовуємо елементи з рівними проміжками між ними */
-    align-items: center; /* Вирівнюємо елементи по вертикалі по центру */
-    position: relative; /* Відносне позиціонування для z-index */
-    z-index: 2; /* Розташовуємо шапку вище за top-section */
-    font-family: 'Poppins';
+header {
+    color: white;
+    padding: 30px 40px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent; /* Прозорий фон (змінити за потреби) */
+    overflow: hidden; /* Обрізає зайві відступи */
 }
+
+.horizontal-flow {
+    display: flex;
+    align-items: center;
+
+}
+.header-left:hover {
+    padding: 5px; /* Компенсуємо збільшення */
+  }
+  
 
 /* Стилі для лівого блоку (логотип + перемикач мови) */
 .header-left {
-    display: flex; /* Використовуємо flexbox для розташування логотипу і перемикача мови в ряд */
-    align-items: center; /* Вирівнюємо елементи по вертикалі по центру */
-    gap: 5px; /* Задаємо відстань між логотипом і перемикачем мови (5 пікселів) */
+    flex: 0 0 auto;
+    width: 150px; /* Фіксована ширина */
+    padding: 10px; /* Буфер для анімації */
+    margin-right: 15px;
+    transition: all 0.3s ease;
 }
 
-/* Стилі для логотипу */
-.logo {
-    margin-right: 0px; /* Відступ справа 30 пікселів */
+.logo-content {
+    display: inline-block; /* Альтернатива flex */
+    vertical-align: middle;
 }
+
+.header-logo img {
+    display: block;
+    width: 100%; /* Заповнює батьківський контейнер */
+    height: auto;
+    max-height: 130px; /* 150px - 20px (padding) */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
 
 /* Стилі для зображення логотипу */
-.logo img {
-    width: 172px; /* Ширина зображення — 172 пікселі */
-    height: auto; /* Висота автоматична для збереження пропорцій */
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); /* Додаємо тінь для зображення: 0px зміщення по X, 0px по Y, 5px розмиття, напівпрозорий чорний колір */
+
+.header-logo img:hover {
+    transform: scale(1.1); /* Ефект при наведенні */
 }
+
+/* Приховати кнопку поки що */
+.burger-btn {
+    display: none;
+  }
 
 /* Стилі для блоку з вибором мови */
-.language {
-    margin-right: 0px; /* Відступ справа 30 пікселів */
+/* === Базові стилі === */
+.header-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    margin-left: 20px; 
+    margin-right: auto; /* Залишаємо */
+    min-width: 120px; /* Фіксуємо мінімальну ширину */
 }
 
-/* Стилі для посилань у блоці вибору мови */
-.language a {
-    color: #ffffff; /* Білий колір тексту для посилань */
-    text-decoration: none; /* Прибираємо підкреслення у посилань */
-    margin: 0 5px; /* Відступи зліва і справа по 5 пікселів */
+.text-language {
+    position: relative; /* Для позиціонування випадаючого меню */
+    font-family: 'Poppins', Arial, sans-serif; /* Узгоджуємо з основним шрифтом */
+    z-index: 5; /* Для коректного перекриття */
+    margin: 0 10px; /* Горизонтальні відступи */
+    padding: 5px 0; /* Вертикальний простір */
+  }
+
+/* === Кнопка випадаючого меню (при наведенні) === */
+/* Покращений варіант з анімацією */
+/* Базові стилі кнопки */
+.language-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  border: none;
+  font-family: inherit;
+  transition: all 0.25s ease;
+  position: relative; /* Для стрілки */
 }
 
-/* Стилі для посилань у блоці вибору мови при наведенні */
-.language a:hover {
-    color: #ffbb2f; /* Жовтий колір тексту при наведенні */
+/* Стани кнопки (об'єднано) */
+.language-dropdown-btn:hover {
+  color: #e94a47; /* Ваш колір (приклад) */
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
 
-/* Стилі для навігаційного меню */
-nav {
-    display: flex; /* Використовуємо flexbox для розташування списку */
-    align-items: center; /* Вирівнюємо список по вертикалі по центру */
+.language-dropdown-btn:active {
+  transform: translateY(0);
 }
 
-/* Стилі для списку в навігаційному меню */
-nav ul {
-    list-style: none; /* Прибираємо маркери списку */
-    margin: 0; /* Прибираємо зовнішні відступи */
-    padding: 0; /* Прибираємо внутрішні відступи */
-    display: flex; /* Використовуємо flexbox для розташування пунктів меню в ряд */
-    align-items: center; /* Вирівнюємо пункти по вертикалі по центру */
+.language-dropdown-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Стилі для елементів списку в навігаційному меню */
-nav ul li {
-    margin: 0 10px; /* Відступи зліва і справа по 10 пікселів */
+/* Випадаюче меню */
+.language-dropdown-menu {
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: 
+    opacity 0.25s ease,
+    transform 0.25s ease; /* Узгоджено з кнопкою */
+  transition-delay: 0.1s;
 }
 
-/* Стилі для посилань у навігаційному меню */
-nav ul li a {
-    color: #ffffff; /* Білий колір тексту для посилань */
-    text-decoration: none; /* Прибираємо підкреслення у посилань */
-    font-weight: 500; /* Встановлюємо товщину шрифту (середня) */
+.language-dropdown:hover .language-dropdown-menu,
+.language-dropdown:focus-within .language-dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Стилі для посилань у навігаційному меню при наведенні */
-nav ul li a:hover {
-    color: #ffbb2f; /* Жовтий колір тексту при наведенні */
+/* Стрілка (оптимізовано) */
+.language-dropdown-btn::after {
+  content: "▼";
+  margin-left: 5px;
+  font-size: 0.7em;
+  transition: transform 0.25s ease; /* Узгоджено */
+}
+
+.language-dropdown:hover .language-dropdown-btn::after {
+  transform: rotate(180deg);
+}
+
+/* Стрілка (трикутник)
+.triangle {
+  width: 12px;
+  height: 6px;
+  transition: transform 0.3s ease;
+} */
+
+/* .language-dropdown:hover .triangle,
+.language-dropdown:focus-within .triangle {
+  transform: rotate(180deg);
+} */
+
+/* === Випадаюче меню === */
+.language-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    min-width: 160px;
+    padding: 8px 0;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.language-dropdown-menu .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    color: #000;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.language-dropdown-menu .dropdown-item:hover {
+    background: #f5f5f5;
+}
+  
+/* Стилі для прапорів (спеціалізовані для PNG) */
+.dropdown-item-flag {
+    width: 20px;
+    height: 15px;
+    flex: 0 0 auto; /* Фіксує розмір */
+    display: inline-block; /* Краще для PNG */
+    position: relative;
+}
+
+.dropdown-item-flag img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 1px; /* Легке закруглення кутів */
+    image-rendering: -webkit-optimize-contrast; /* Різкість для маленьких зображень */
+    image-rendering: crisp-edges;
+}
+
+/* Ховер-ефекти */
+.language-dropdown-menu .dropdown-item:hover .dropdown-item-flag img {
+    filter: brightness(1.05); /* Легке підсвічування */
+    transform: scale(1.03); /* Мінімальне збільшення */
+    transition: all 0.2s ease;
 }
 
 
+
+/* Оптимізована анімація */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.language-dropdown-menu {
+    animation: fadeIn 0.25s cubic-bezier(0.21, 0.61, 0.35, 1) forwards;
+    will-change: transform, opacity; /* Підказка браузеру для оптимізації */
+}
+
+  
+  /* Для всіх пристроїв (фокус) */
+.language-dropdown:focus-within .language-dropdown-menu {
+    display: block;
+}
 
 
 /* Стилі для елементів списку, які є соціальними іконками */
-.social-item {
-    margin: 0 10px; /* Відступи зліва і справа по 10 пікселів, щоб відповідати іншим пунктам меню */
+.menu-social nav {
+    display: flex;
+    align-items: center;
+    /* Явно вказуємо порядок через direction */
+    flex-direction: row; /* Елементи йдуть в порядку HTML */
 }
+.header-right-menu {
+    margin-right: 20px; /* Відступ перед соцмережами */
+}
+.header-right-menu a:hover {
+    color: #ffbb2f;
+}
+
 
 /* Стилі для посилань соціальних іконок */
+.header-social-icon {
+    border: 1px solid white; /* Біла рамка */
+    border-radius: 20%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background-color: transparent; /* Прозорий фон */
+}
+
 .social-link {
-    color: #ffffff; /* Білий колір для іконок */
-    font-size: 20px; /* Розмір іконок — 20 пікселів */
-    border: 1px solid #ffffff; /* Біла рамка товщиною 1 піксель */
-    border-radius: 10%; /* Робимо рамку круглою */
-    width: 30px; /* Фіксована ширина для іконки з рамкою */
-    height: 30px; /* Фіксована висота для іконки з рамкою */
-    display: flex; /* Використовуємо flexbox для центрування іконки всередині рамки */
-    align-items: center; /* Вирівнюємо іконку по вертикалі по центру */
-    justify-content: center; /* Вирівнюємо іконку по горизонталі по центру */
-    text-decoration: none; /* Прибираємо підкреслення у посилання */
+    color: #ffffff; /* Біла іконка за замовчуванням */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
-/* Стилі для посилань соціальних іконок при наведенні */
-.social-link:hover {
-    color: #ffbb2f; /* Жовтий колір іконок при наведенні */
-    border-color: #ffbb2f; /* Жовта рамка при наведенні */
+/* Ефект при наведенні */
+.header-social-icon:hover {
+    border-color: white;
+    background-color: white;
 }
 
-/* Стилі для основного вмісту сторінки */
-main {
-    padding: 0; /* Прибираємо внутрішні відступи */
+.header-social-icon:hover .social-link i {
+    opacity: 0; /* Робимо іконку повністю прозорою */
+    visibility: hidden; /* Приховуємо її */
 }
 
-/* Стилі для секції Hero */
-.hero {
-    padding: 50px 50px 100px; /* Зменшуємо верхній padding до 50px, залишаємо нижній 100px */
-    color: #000000; /* Чорний колір тексту */
-    text-align: left; /* Вирівнюємо текст зліва */
-    position: relative; /* Відносне позиціонування для z-index */
-    z-index: 2; /* Розташовуємо вище за псевдоелементи top-section */
+/* Альтернативний варіант - зміна кольору іконки */
+.header-social-icon:hover .social-link i {
+    color: #333; /* Темний колір для контрасту на білому фоні */
 }
 
-/* Стилі для заголовка в секції Hero */
-.hero h1 {
-    font-size: 110px; /* Розмір шрифту — 110 пікселів */
-    color: #ffffff; /*  колір тексту */
-    font-weight: 700; /* Товщина шрифту — жирний */
-    margin-bottom: 20px; /* Відступ знизу 20 пікселів */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Додаємо тінь для тексту: 2px зміщення по X, 2px по Y, 4px розмиття, напівпрозорий чорний колір */
+.header-right {
+    flex: 0 0 auto;
+    margin-left: 40px; /* Фіксований відступ */
+  }
+.menu-social {
+    display: flex;
+    gap: 30px; /* Відстань між навігацією та соцмережами */
 }
-
-/* Стилі для параграфа в секції Hero */
-.hero p {
-    font-size: 20px; /* Розмір шрифту — 20 пікселів */
-    color: #ffffff; /* колір тексту */
-    margin-bottom: 30px; /* Відступ знизу 30 пікселів */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Додаємо тінь для тексту: 1px зміщення по X, 1px по Y, 3px розмиття, напівпрозорий чорний колір */
+.header-right-menu,
+.header-social {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 15px;
+  margin: 0;
+  gap: 15px; /* Відстань між пунктами меню */
+}
+@media (max-width: 992px) {
+    header {
+      padding: 20px 15px;
+    }
+    
+    .horizontal-flow {
+      flex-direction: column; /* Зміна на колонку */
+      gap: 20px;
+      width: 100%;
+      margin: 0;
+    }
+    
+    .header-logo {
+      width: auto; /* Ширина за вмістом */
+      margin: 0 auto; /* Центрування */
+      order: -1;
+    }
+    
+    .header-logo img {
+      height: 100px; /* Проміжний розмір для планшетів */
+    }
+  }
+  
+@media (max-width: 768px) { /* Змінив 576px → 768px для кращого охоплення */
+    .header-right-menu {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .header-logo img {
+      height: 80px; /* Більш адекватний розмір для мобільних */
+    }
+    
+    .header-right {
+      width: 100%;
+    }
+  }
+/* Адаптація */
+@media (max-width: 768px) {
+    .header-left {
+      width: 100px;
+      padding: 5px;
+      margin-right: 10px;
+    }
+    
+    .header-logo img {
+      max-height: 90px;
+    }
+    
+    .header-left:hover {
+      padding: 3px;
+    }
+  }
+/* Для десктопів (з курсором) */
+@media (hover: hover) {
+    .language-dropdown:hover .language-dropdown-menu {
+      display: block;
+    }
 }
