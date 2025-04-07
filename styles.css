@@ -2,7 +2,7 @@
 body {
     margin: 0; /* Прибираємо зовнішні відступи */
     font-family: 'Poppins', Arial, Helvetica, sans-serif; /* Встановлюємо шрифт: основний — Roboto, запасні — Arial, Helvetica, sans-serif */
-    background-color: #1f1616; /* Білий фон для всієї сторінки */
+    background-color: #ffffff; /* Білий фон для всієї сторінки */
     color: #000000; /* Чорний колір тексту для всієї сторінки */
     position: relative; /* Встановлюємо відносне позиціонування для можливості використання абсолютного позиціонування дочірніх елементів */
 }
@@ -12,6 +12,7 @@ body::before {
     display: none; /* Ховаємо псевдоелемент */
 }
 
+
 /* Обмежуємо ширину для всіх секцій */
 .container {
     max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
@@ -19,19 +20,16 @@ body::before {
     width: 100%; /* Ширина контейнера — 100% від батьківського елемента */
     box-sizing: border-box; /* Включаємо padding і border у загальну ширину елемента */
 }
-
 /* Стилі для секції About */
 .about {
-    padding: 10px; /* Внутрішні відступи 10 пікселів з усіх боків */
-    background-size: cover; /* Фонове зображення розтягується, щоб покрити весь блок */
-    background-position: center; /* Центруємо фонове зображення */
-    color: #000000; /* Чорний колір тексту */
+    padding: 45px 0 30px; /* Внутрішні відступи */
 }
 
 /* Стилі для контейнера в секції About */
 .about-container {
     max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
     margin: 0 auto; /* Центруємо контейнер по горизонталі */
+    padding: 0 15px; /* Додаємо горизонтальні відступи */
 }
 
 /* Стилі для вмісту в секції About */
@@ -39,6 +37,7 @@ body::before {
     display: flex; /* Використовуємо flexbox для розташування елементів */
     align-items: center; /* Вирівнюємо елементи по вертикалі по центру */
     gap: 30px; /* Проміжок між елементами — 30 пікселів */
+    flex: 1; /* Дочірні елементи займають однакову ширину */
 }
 
 /* Стилі для блоку зображення в секції About */
@@ -68,11 +67,12 @@ body::before {
 }
 
 /* Стилі для заголовка в текстовому блоці секції About */
-#span-about-header h2{
+.about-header {
     font-size: 54px; /* Розмір шрифту — 40 пікселів */
     color: rgb(70, 80, 100); /*  колір тексту */
     
 }
+
 
 /* Стилі для параграфів у текстовому блоці секції About */
 .about-text p {
@@ -112,7 +112,30 @@ body::before {
     background-color: #dc0a0a; /*фон при наведенні */
     color: white; /* колір тексту при наведенні */
 }
-
+@media (max-width: 1200px) {
+    .about-container {
+      max-width: 960px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .about-container {
+      max-width: 720px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about-container {
+      max-width: 540px;
+    }
+  }
+  @media (max-width: 768px) {
+    .about-content {
+      flex-direction: column; /* Розташовуємо елементи вертикально */
+      align-items: stretch; /* Розтягуємо елементи на всю ширину */
+      gap: 20px; /* Зменшуємо проміжок для мобільних */
+    }
+  }
 /* Стилі для хвилеподібного роздільника (Wave Divider) */
 .wave-divider {
     width: 100%; /* Ширина 100% */
@@ -124,54 +147,94 @@ body::before {
 
 /* Стилі для секції Our Courses (Services Section) */
 .services-section {
-    padding: 50px; /* Внутрішні відступи 50 пікселів з усіх боків */
-    background-color: #ffffff; /* Білий фон */
-    color: #000000; /* Чорний текст */
+    padding: 50px 16px; /* Внутрішні відступи 50 пікселів з усіх боків */
     text-align: center; /* Вирівнюємо текст по центру */
+    background-image: url(pictures/servicesection.svg);
+    overflow: hidden;
+    position: relative;
+    background-size: cover; /* Фонове зображення розтягується, щоб покрити весь блок */
+    background-position: center; /* Центруємо фонове зображення */
 }
 
 /* Стилі для заголовка в секції Our Courses */
 .services-section h2 {
     font-size: 36px; /* Розмір шрифту — 36 пікселів */
     margin-bottom: 40px; /* Відступ знизу 40 пікселів */
+    color: #2d3748;
+    position: relative;
+    display: inline-block;
 }
 
 /* Стилі для контейнера карток у секції Our Courses */
 .services-container {
-    display: flex; /* Використовуємо flexbox для розташування карток */
-    justify-content: space-around; /* Розташовуємо картки з рівними проміжками між ними */
-    flex-wrap: wrap; /* Дозволяємо карткам переноситися на новий рядок */
-    max-width: 1150px; /* Максимальна ширина контейнера — 1150 пікселів */
-    margin: 0 auto; /* Центруємо контейнер по горизонталі */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 71.875rem; /* 1150px */
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* Стилі для картки курсу в секції Our Courses */
 .service-card {
-    width: 300px; /* Ширина картки — 300 пікселів */
-    margin: 20px; /* Зовнішні відступи 20 пікселів з усіх боків */
-    background-color: #f5f5f5; /* Світло-сірий фон */
-    padding: 20px; /* Внутрішні відступи 20 пікселів з усіх боків */
-    border-radius: 10px; /* Закруглюємо кути картки на 10 пікселів */
+    background: #ffffff;
+    border-radius: 0.625rem; /* 10px */
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
 }
+
 
 /* Стилі для заголовка картки в секції Our Courses */
 .service-card h3 {
-    font-size: 20px; /* Розмір шрифту — 20 пікселів */
-    color: #0000ff; /* Синій колір тексту */
-    margin-bottom: 10px; /* Відступ знизу 10 пікселів */
+    font-size: 1.25rem; /* 20px */
+    color: #2563eb;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
 }
+.service-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+.service-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 2px;
+    background: #ffbb2f;
+}
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem 0;
+    text-align: left;
+    
+}
+
 
 /* Стилі для параграфа в картці секції Our Courses */
-.service-card p {
-    font-size: 16px; /* Розмір шрифту — 16 пікселів */
-    color: #000000; /* Чорний колір тексту */
-}
+.service-features li {
+    padding: 0.5rem 0;
+    color: #4a5568;
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.9375rem; /* 15px */
+  }
 
 /* Додаємо синє тире перед текстом у параграфі картки */
-.service-card p::before {
-    content: '- '; /* Додаємо тире перед текстом */
-    color: #0000ff; /* Синій колір для тире */
-}
+.service-features li::before {
+    content: '-';
+    color: #2563eb;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
 
 /* Стилі для кнопки в картці секції Our Courses */
 .service-button {
@@ -187,14 +250,25 @@ body::before {
     margin-top: 20px; /* Відступ зверху 20 пікселів */
     background-color: transparent; /* Прозорий фон */
     text-decoration: none; /* Прибираємо підкреслення у посилання */
+    
 }
 
 /* Стилі для кнопки в картці секції Our Courses при наведенні */
 .service-button:hover {
-    background-color: #ffbb2f; /* Жовтий фон при наведенні */
-    color: white; /* Білий колір тексту при наведенні */
-}
-
+    background-color: #ffbb2f;
+    color: white;
+    transform: scale(1.02);
+  }
+  /* Адаптація для мобільних */
+  @media (max-width: 768px) {
+    .services-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .services-section h2 {
+      font-size: 1.75rem;
+    }
+  }
 /* Location Section */
 .location-section {
     padding: 50px;
