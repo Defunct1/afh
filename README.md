@@ -1,3 +1,4 @@
+<<<<<<< HEAD
            <div class="header-center">
                 <div class="header-center-inner">
                     <div class="text-language">
@@ -25,3 +26,6 @@
                     </div>
                 </div>
             </div>
+=======
+Some text
+>>>>>>> ace92e97c19fbea7adae5a9f0af2617eac354de4
